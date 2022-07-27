@@ -44,4 +44,5 @@ jobs:
         name: "Arquivos de deploy"
         body: "Arquivos do cliente ${{ github.event.inputs.name }} gerados"
     - name: Link do Release
-      run: echo "${{ steps.release_push.outputs.html_url }}"
+      run: |
+        echo "${{ steps.release_push.outputs.html_url }}"
