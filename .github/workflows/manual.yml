@@ -40,9 +40,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Download do cert manager latest
       run: wget https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml -O 1_cert-manager.yaml
-    - name: Download do cert manager latest
+    - name: Gerando yaml do ingress controler
       run: |
         sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" ic.yaml
         sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" ic.yaml
