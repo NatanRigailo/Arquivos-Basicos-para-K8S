@@ -37,6 +37,6 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "'${{ github.event.inputs.name }}.zip'"
+        artifacts: "${{ github.event.inputs.name }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ github.event.inputs.name }}
