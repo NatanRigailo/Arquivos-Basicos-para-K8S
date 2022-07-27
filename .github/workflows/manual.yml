@@ -45,4 +45,5 @@ jobs:
         body: "Arquivos do cliente ${{ github.event.inputs.name }} gerados"
     - name: Link do Release
       run: |
+        echo ""
         echo "${{ steps.release_push.outputs.html_url }}"
