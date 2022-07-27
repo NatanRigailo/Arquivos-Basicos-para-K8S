@@ -46,8 +46,8 @@ jobs:
       run: wget https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml -O 1_cert-manager.yaml
     - name: Gerando yaml do ingress controler
       run: |
-        sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" ic.yaml
-        sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" ic.yaml
+        sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" 2_ingress_controler.yaml
+        sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" 2_ingress_controler.yaml
         cat ic.yaml
     - name: Criando pacote zip
       uses: TheDoctor0/zip-release@0.6.2
