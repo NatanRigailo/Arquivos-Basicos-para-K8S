@@ -39,4 +39,4 @@ jobs:
       with:
         artifacts: "${{ github.event.inputs.name }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ github.event.inputs.name }}
+        tag: "latest"
