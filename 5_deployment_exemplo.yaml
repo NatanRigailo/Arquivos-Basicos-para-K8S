@@ -1,0 +1,98 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver
+  namespace: <NAMESPACE_PADRAO>
+  labels:
+    k8s-app: webserver
+    kubernetes.io/cluster-service: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: webserver
+  template:
+    metadata:
+      labels:
+        k8s-app: webserver
+    spec:
+      #imagePullSecrets:
+      #- name: ocir
+      containers:
+      - name: webserver
+        image: nginx
+        resources:
+          requests:
+            memory: 126Mi
+            cpu: 50m        
+          limits:
+            memory: 256Mi
+            cpu: 100m 
+        ports:
+        - containerPort: 80
+          name: webserver
+          protocol: TCP
+#       nodeSelector:
+#         tipo: autoscaler
+
+  
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver
+  namespace: <NAMESPACE_PADRAO>
+  labels:
+    k8s-app: webserver
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    k8s-app: webserver
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: webserver
+  namespace: <NAMESPACE_PADRAO>
+spec:
+  dnsNames:
+    - exemplo.<DNS>
+  secretName: webserver-tls
+  issuerRef:
+    name: letsencrypt-cluster-issuer
+    kind: ClusterIssuer
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+        
+  name: webserver
+  namespace: <NAMESPACE_PADRAO>
+spec:
+  tls:
+  - hosts:
+    - exemplo.<DNS>
+    secretName: webserver-tls
+  rules:
+  - host: exemplo.<DNS>
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webserver
+            port:
+              number: 80
+
