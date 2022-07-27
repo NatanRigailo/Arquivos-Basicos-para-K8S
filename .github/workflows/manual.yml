@@ -10,31 +10,31 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Nome amigavel do cliente:'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'plsscloud'
         # Input has to be provided for the workflow to run
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  Gerando Arquivos:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.name }}"> 1.yaml
-    - name: Zip Release
+    - name: Download do cert manager latest
+      run: wget https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml -O 1_cert-manager.yaml
+    - name: Criando pacote zip
       uses: TheDoctor0/zip-release@0.6.2
       with:
         type: 'zip'
         filename: '${{ github.event.inputs.name }}.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-    - name: Upload Release
+    - name: Upload do Release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "${{ github.event.inputs.name }}.zip"
