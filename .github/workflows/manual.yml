@@ -39,6 +39,6 @@ jobs:
       with:
         artifacts: "${{ github.event.inputs.name }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ github.event.inputs.name }}, latest
+        tag: latest
         name: "Arquivos de deploy"
         body: "Arquivos do cliente ${{ github.event.inputs.name }} gerados"
