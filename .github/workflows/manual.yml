@@ -36,9 +36,12 @@ jobs:
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name: Upload do Release
       uses: ncipollo/release-action@v1
+      id: release_push
       with:
         artifacts: "${{ github.event.inputs.name }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
-        tag: latest
+        tag:  ${{ github.run_id }}
         name: "Arquivos de deploy"
         body: "Arquivos do cliente ${{ github.event.inputs.name }} gerados"
+    - name: Link do Release
+      run: echo "${{ steps.release_push.outputs.html_url }}"
