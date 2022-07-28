@@ -9,7 +9,7 @@ Então inclusos:
 ~~- Metrics server: é baixada a versão latest do metrics server, necessário para proivisionamento do cluster autoscaler~~
 ~~-Cluster autoscaler: é baixado e parametrizado o arquivo de provisionamento do cluster autoscaler OKE e AWS~~
 
-#Como Usar
+# Como Usar
 1- Navegue para as Actions:
 ![image](https://user-images.githubusercontent.com/83661016/181553999-cc910a37-cfab-477b-9a0e-19a8138cd7d6.png)
 2- Selecione Manual Workflow
