@@ -70,7 +70,8 @@ jobs:
       run: |
         sed -i "s/<DNS>/${{ github.event.inputs.dns }}/g" 5_deployment_exemplo.yaml
         sed -i "s/<NAMESPACE_PADRAO>/${{ github.event.inputs.namespace }}/g" 5_deployment_exemplo.yaml
-
+    - name: Download do metrics server latest
+      run: wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml -O 6_metrics_server.yaml
 
     - name: Criando pacote zip
       uses: TheDoctor0/zip-release@0.6.2
