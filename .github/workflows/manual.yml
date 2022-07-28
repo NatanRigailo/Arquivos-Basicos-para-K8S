@@ -17,14 +17,14 @@ on:
         required: true
       shape_minimo:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Shape minimo do loadbalancer:'
+        description: 'Shape minimo do loadbalancer(OKE):'
         # Default value if no value is explicitly provided
         default: '10'
         # Input has to be provided for the workflow to run
         required: true
       shape_maximo:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Shape maximo do loadbalancer:'
+        description: 'Shape maximo do loadbalancer(OKE):'
         # Default value if no value is explicitly provided
         default: '100'
         # Input has to be provided for the workflow to run
