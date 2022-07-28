@@ -60,8 +60,8 @@ jobs:
       run: wget https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml -O 1_cert-manager.yaml
     - name: Gerando yaml do ingress controler
       run: |
-        sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" 2_ingress_controler.yaml
-        sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" 2_ingress_controler.yaml
+        sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" 2_ingress_controler_OKE.yaml
+        sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" 2_ingress_controler_OKE.yaml
 
     - name: Gerando yaml da dashboard
       run: |
