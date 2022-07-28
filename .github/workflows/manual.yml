@@ -27,6 +27,12 @@ on:
         - 1.20.0-6
         - 1.19.1-8
         - 1.18.3-4
+      ocidnodepool:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'OCID da Node Pool Autoscaler:(opcional)'
+        # Default value if no value is explicitly provided
+        default: ''
+
       shape_minimo:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Shape minimo do loadbalancer(OKE):'
@@ -84,7 +90,10 @@ jobs:
         sed -i "s/<NAMESPACE_PADRAO>/${{ github.event.inputs.namespace }}/g" 5_deployment_exemplo.yaml
     - name: Download do metrics server latest
       run: wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml -O 6_metrics_server.yaml
-
+    - name: Gerando yaml autoscaler
+      run: |
+        sed -i "s/<NODEPOOL>/${{ github.event.inputs.ocidnodepool }}/g" 7_cluster_autoscaler_OKE.yaml
+        sed -i "s/<K8s-VERSAO>/${{ github.event.inputs.versaok8s }}/g" 7_cluster_autoscaler_OKE.yaml
     - name: Criando pacote zip
       uses: TheDoctor0/zip-release@0.6.2
       with:
