@@ -29,6 +29,13 @@ on:
         default: '100'
         # Input has to be provided for the workflow to run
         required: true
+      namespace:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Informe o namespace inicial:'
+        # Default value if no value is explicitly provided
+        default: 'default'
+        # Input has to be provided for the workflow to run
+        required: true
       dns:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Informe o dominio do cliente:'
@@ -62,6 +69,7 @@ jobs:
     - name: Gerando yaml exemplo
       run: |
         sed -i "s/<DNS>/${{ github.event.inputs.dns }}/g" 5_deployment_exemplo.yaml
+        sed -i "s/<NAMESPACE_PADRAO>/${{ github.event.inputs.namespace }}/g" 5_deployment_exemplo.yaml
 
 
     - name: Criando pacote zip
