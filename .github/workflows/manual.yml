@@ -55,7 +55,7 @@ jobs:
       run: |
         sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" 2_ingress_controler.yaml
         sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" 2_ingress_controler.yaml
-        cat ic.yaml
+
     - name: Gerando yaml da dashboard
       run: |
         sed -i "s/<DNS>/${{ github.event.inputs.dns }}/g" 4_dashboard.yaml
