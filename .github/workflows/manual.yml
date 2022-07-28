@@ -29,6 +29,13 @@ on:
         default: '100'
         # Input has to be provided for the workflow to run
         required: true
+      dns:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Informe o dominio do cliente:'
+        # Default value if no value is explicitly provided
+        default: 'exemplo.com.br'
+        # Input has to be provided for the workflow to run
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -49,6 +56,14 @@ jobs:
         sed -i "s/<SHAPE_MIN>/${{ github.event.inputs.shape_minimo }}/g" 2_ingress_controler.yaml
         sed -i "s/<SHAPE_MAX>/${{ github.event.inputs.shape_maximo }}/g" 2_ingress_controler.yaml
         cat ic.yaml
+    - name: Gerando yaml da dashboard
+      run: |
+        sed -i "s/<DNS>/${{ github.event.inputs.dns }}/g" 4_dashboard.yaml
+    - name: Gerando yaml exemplo
+      run: |
+        sed -i "s/<DNS>/${{ github.event.inputs.dns }}/g" 5_deployment_exemplo.yaml
+
+
     - name: Criando pacote zip
       uses: TheDoctor0/zip-release@0.6.2
       with:
