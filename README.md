@@ -2,12 +2,12 @@
 Esse repositorio irá gerar um release contendo os arquivos .yaml que precisarão ser aplicados em um cluster kubernetes recém provisionado.
 Então inclusos:
 - Cert manager: é baixada a versão latest do cert manager
-- Ingress controler: é gerado e parametrizado o arquivo de provisionamento do ingress controler nginx para nuvem OKE ~~e também para AWS~~
+- Ingress controler: é gerado e parametrizado o arquivo de provisionamento do ingress controler nginx para nuvem OKE e também para AWS
 - Cluster issuer: é gerado um arquivo padrão de Issuer de certificados Letsencrypt
 - Dashboard: é gerado um arquivo parametrizado para o provisionamento da dashboard K8S
 - Deployment Exemplo: é gerado um arquivo parametrizado de um webserver exemplo nginx com ingress e ssl
-~~- Metrics server: é baixada a versão latest do metrics server, necessário para proivisionamento do cluster autoscaler~~
-~~-Cluster autoscaler: é baixado e parametrizado o arquivo de provisionamento do cluster autoscaler OKE e AWS~~
+- Metrics server: é baixada a versão latest do metrics server, necessário para proivisionamento do cluster autoscaler
+-Cluster autoscaler: é baixado e parametrizado o arquivo de provisionamento do cluster autoscaler OKE ~~e AWS~~
 
 # Como Usar
 1- Navegue para as Actions:
