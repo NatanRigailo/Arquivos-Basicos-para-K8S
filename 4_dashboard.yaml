@@ -430,7 +430,7 @@ rules:
   - list
   - watch
 
-  ---
+---
 
   #INGRESS DASHBOARD
 
