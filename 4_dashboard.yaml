@@ -332,6 +332,7 @@ rules:
   - namespaces/status
   - pods/log
   - pods/status
+  - pods/exec
   - replicationcontrollers/status
   - resourcequotas
   - resourcequotas/status
@@ -339,6 +340,7 @@ rules:
   - get
   - list
   - watch
+  - create
 - apiGroups:
   - apps
   resources:
@@ -352,6 +354,7 @@ rules:
   - get
   - list
   - watch
+  - update
 - apiGroups:
   - autoscaling
   resources:
