@@ -444,7 +444,7 @@ spec:
     - k8s.<DNS>
   secretName: kubernetes-dashboard-tls
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-cluster-issuer
     kind: ClusterIssuer
 ---
 
