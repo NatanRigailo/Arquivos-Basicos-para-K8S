@@ -94,6 +94,9 @@ jobs:
       run: |
         sed -i "s/<NODEPOOL>/${{ github.event.inputs.ocidnodepool }}/g" 7_cluster_autoscaler_OKE.yaml
         sed -i "s/<K8s-VERSAO>/${{ github.event.inputs.versaok8s }}/g" 7_cluster_autoscaler_OKE.yaml
+    - name: Gerando yaml do ingress do prometheus
+      run: |
+        sed -i "s/<DNS>/${{ github.event.inputs.dns }}/g" 8_prometheus_ingress.yaml
     - name: Criando pacote zip
       uses: TheDoctor0/zip-release@0.6.2
       with:
